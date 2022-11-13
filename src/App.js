@@ -1,8 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState, useEffect, useRef} from 'react';
-import { Dots } from "react-activity";
+import React, {useState, useEffect, useRef, Image} from 'react';
+import {Dots} from "react-activity";
 import "react-activity/dist/library.css";
+import TitleImage from "./title.png"
+import SubTitleImage from "./subTitle.png"
+
 
 function App() {
 
@@ -19,6 +22,7 @@ function App() {
         socket.current.addEventListener('open', e => {
             console.log('WebSocket is connected')
             getInitialValues()
+            setSpinnerOn(false)
         })
         socket.current.addEventListener('close', e => console.log('WebSocket is closed'))
 
@@ -30,7 +34,7 @@ function App() {
             console.log(`number of yes's:`, message.yesCount)
             setYesCount(message.yesCount)
             setNoCount(message.noCount)
-            if(spinnerOn) setSpinnerOn(false)
+            if (spinnerOn) setSpinnerOn(false)
         })
 
         return () => {
@@ -65,15 +69,20 @@ function App() {
 
     return (
         <div className="App">
-            {spinnerOn ? <Dots  color="#0000FF" size={32} speed={1} animating={true} /> :
-                <header className="App-header">
-                    <p>
-                        Yes count: {yesCount}.
+            {spinnerOn ? <Dots color="#0000FF" size={32} speed={1} animating={true}/> :
+                <div>
+                    <div className="TitlesContainer">
+                        <img alt="TitleImage" src={TitleImage} height={50}/>
+                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={20}/>
+                    </div>
+                    <header>Lifetime Totals:</header>
+                    <p className="YesText">
+                        YES: {yesCount}
                     </p>
-                    <p>
-                        No count: {noCount}.
+                    <p className="NoText">
+                        NO: {noCount}
                     </p>
-                </header>
+                </div>
             }
         </div>
     );
