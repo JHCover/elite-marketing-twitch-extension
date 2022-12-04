@@ -2,6 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+}
+
+.Border {
+  border: blue;
+  border-width: 1em;
+  border-style: solid;
+  height: 100vh;
+  padding: 1em;
 }
 
 .App-logo {
@@ -57,4 +66,8 @@
 .NoText {
   font-weight: 1000;
   color: red;
+}
+
+.Header {
+  font-weight: 1000;
 }
