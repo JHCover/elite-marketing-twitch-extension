@@ -27,14 +27,19 @@ function App() {
         })
     }, [])
 
-
     return (
         <div className="App">
             {spinnerOn ? <Dots color="#0000FF" size={32} speed={1} animating={true}/> :
                 <div className="Border">
+
                     <div className="TitlesContainer">
-                        <img alt="TitleImage" src={TitleImage} height={50}/>
-                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={20}/>
+                        <div>
+                            {socket.connected ?
+                                <div className="blob blue"></div> :
+                                <div className="blob red"></div>
+                            } <img alt="TitleImage" src={TitleImage} height={70}/>
+                        </div>
+                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={35}/>
                     </div>
                     <div className="StatsWrapper">
                         <header className="Header">All-time</header>
@@ -45,7 +50,8 @@ function App() {
                             No: {pitchStats.noCount}
                         </text>
                         {pitchStats.displayGoal ?
-                            <text className="GoalText">Goal: {pitchStats && pitchStats.streamGoalProgress} / {pitchStats && pitchStats.streamGoal}</text>
+                            <text
+                                className="GoalText">Goal: {pitchStats && pitchStats.streamGoalProgress} / {pitchStats && pitchStats.streamGoal}</text>
                             :
                             <></>
                         }
