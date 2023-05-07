@@ -5,14 +5,14 @@ import {Dots} from "react-activity";
 import "react-activity/dist/library.css";
 import TitleImage from "./title.png"
 import SubTitleImage from "./subTitle.png"
-import { io } from "socket.io-client";
+import {io} from "socket.io-client";
 
 const socket = io("https://elitemarketingstats.com");
 
 function App() {
 
     const [pitchStats, setPitchStats] = useState({})
-    const [spinnerOn, setSpinnerOn] = useState()
+    const [spinnerOn, setSpinnerOn] = useState(false)
 
 
     useEffect(() => {
@@ -29,23 +29,30 @@ function App() {
 
 
     return (
-            <div className="App">
-                {spinnerOn ? <Dots color="#0000FF" size={32} speed={1} animating={true}/> :
-                    <div className="Border">
-                        <div className="TitlesContainer">
-                            <img alt="TitleImage" src={TitleImage} height={50}/>
-                            <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={20}/>
-                        </div>
-                        <header className="Header">Lifetime Totals</header>
-                        <p className="YesText">
-                            YES: {pitchStats.yesCount}
-                        </p>
-                        <p className="NoText">
-                            NO: {pitchStats.noCount}
-                        </p>
+        <div className="App">
+            {spinnerOn ? <Dots color="#0000FF" size={32} speed={1} animating={true}/> :
+                <div className="Border">
+                    <div className="TitlesContainer">
+                        <img alt="TitleImage" src={TitleImage} height={50}/>
+                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={20}/>
                     </div>
-                }
-            </div>
+                    <div className="StatsWrapper">
+                        <header className="Header">All-time</header>
+                        <text className="YesText">
+                            Yes: {pitchStats.yesCount}
+                        </text>
+                        <text className="NoText">
+                            No: {pitchStats.noCount}
+                        </text>
+                        {pitchStats.displayGoal ?
+                            <text className="GoalText">Goal: {pitchStats && pitchStats.streamGoalProgress} / {pitchStats && pitchStats.streamGoal}</text>
+                            :
+                            <></>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
     );
 }
 

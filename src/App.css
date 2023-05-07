@@ -2,15 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .Border {
   border: blue;
   border-width: 1em;
   border-style: solid;
-  height: 100vh;
   padding: 1em;
+  background-color: lightgray;
+  height: 100vh;
 }
 
 .App-logo {
@@ -61,13 +61,30 @@
 .YesText {
   font-weight: 1000;
   color: green;
+  font-size: 2em;
+
 }
 
 .NoText {
   font-weight: 1000;
   color: red;
+  font-size: 2em;
+
+}
+
+.GoalText {
+  font-weight: 1000;
+  color: rebeccapurple;
+  font-size: 2em;
+
 }
 
 .Header {
   font-weight: 1000;
+  font-size: 2em;
+}
+
+.StatsWrapper {
+  display: flex;
+  flex-direction: column;
 }
