@@ -12,7 +12,7 @@ const socket = io("https://elitemarketingstats.com");
 function App() {
 
     const [pitchStats, setPitchStats] = useState({})
-    const [spinnerOn, setSpinnerOn] = useState(false)
+    const [spinnerOn, setSpinnerOn] = useState(true)
 
 
     useEffect(() => {
@@ -20,6 +20,7 @@ function App() {
         socket.on("initial", (stats) => {
             console.log("initialStats", stats)
             setPitchStats(stats[0])
+            setSpinnerOn(false)
         });
         // receive a broadcast update
         socket.on("statsUpdate", (update) => {
@@ -31,15 +32,14 @@ function App() {
         <div className="App">
             {spinnerOn ? <Dots color="#0000FF" size={32} speed={1} animating={true}/> :
                 <div className="Border">
-
                     <div className="TitlesContainer">
                         <div>
                             {socket.connected ?
                                 <div className="blob blue"></div> :
                                 <div className="blob red"></div>
-                            } <img alt="TitleImage" src={TitleImage} height={70}/>
+                            } <img alt="TitleImage" src={TitleImage} height={50}/>
                         </div>
-                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={35}/>
+                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={25}/>
                     </div>
                     <div className="StatsWrapper">
                         <header className="Header">All-time</header>
