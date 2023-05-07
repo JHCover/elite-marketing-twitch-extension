@@ -37,9 +37,9 @@ function App() {
                             {socket.connected ?
                                 <div className="blob blue"></div> :
                                 <div className="blob red"></div>
-                            } <img alt="TitleImage" src={TitleImage} height={50}/>
+                            } <img alt="TitleImage" src={TitleImage} className="MainLogo"/>
                         </div>
-                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={25}/>
+                        <img className="SubTitle" alt="SubTitleImage" src={SubTitleImage} height={30}/>
                     </div>
                     <div className="StatsWrapper">
                         <header className="Header">All-time</header>

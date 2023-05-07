@@ -59,6 +59,10 @@
   margin-top: -.5em;
 }
 
+.MainLogo {
+  width: 80vw;
+}
+
 .YesText {
   font-weight: 1000;
   color: green;
@@ -92,7 +96,7 @@
 
 .blob {
   position: absolute;
-  margin-left: -16px;
+  margin-left: -12px;
   margin-top: -8px;
   background: black;
   border-radius: 50%;
